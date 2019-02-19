@@ -10,7 +10,7 @@ export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
     case SIGN_UP:
-      return { ...payload };
+      return { ...state, ...payload };
     default:
       return state;
   }
