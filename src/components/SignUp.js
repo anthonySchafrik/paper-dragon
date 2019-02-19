@@ -23,7 +23,7 @@ class SignUp extends Component {
         <input type="text" onChange={handleSignInfo} id="userName" />
         <br />
         <label>Password</label>
-        <input type="text" onChange={handleSignInfo} id="password" />
+        <input type="password" onChange={handleSignInfo} id="password" />
       </div>
     );
   }
