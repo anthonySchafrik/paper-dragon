@@ -7,6 +7,7 @@ mongoose.connect(conString, { useNewUrlParser: true });
 
 db.on('error', console.error.bind(console, 'mongoDB connection error'));
 db.once('open', () => console.log('mongoDB successfully connected'));
+const log = console.log;
 
 let monsterSchema = new Schema({
   type: String,

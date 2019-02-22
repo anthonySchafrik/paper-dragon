@@ -3,7 +3,8 @@ import { SIGN_UP } from '../actions';
 const INITIAL_STATE = {
   userName: '',
   firstName: '',
-  password: ''
+  password: '',
+  passwordCheck: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
