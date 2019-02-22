@@ -1,17 +1,15 @@
-import { SIGN_UP } from '../actions';
+import { LOGIN } from '../actions';
 
 const INITIAL_STATE = {
-  userName: '',
-  firstName: '',
-  password: '',
-  passwordCheck: ''
+  username: '',
+  password: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case SIGN_UP:
+    case LOGIN:
       return { ...state, ...payload };
     default:
       return state;
