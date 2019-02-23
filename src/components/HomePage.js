@@ -63,7 +63,13 @@ class HomePage extends Component {
           <Link to="characterPage">
             <button>Characters</button>
           </Link>
-          <button>Log Out</button>
+          <button
+            onClick={() => {
+              this.setState({ loggedIn: false });
+            }}
+          >
+            Log Out
+          </button>
         </div>
       );
     }

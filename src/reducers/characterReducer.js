@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  user: '',
+  userId: null,
   character: '',
   level: null,
   hp: null,
