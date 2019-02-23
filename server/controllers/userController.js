@@ -2,8 +2,24 @@ const { db } = require('../../database/pg');
 const log = console.log;
 
 module.exports.logUserIn = (req, res) => {
-  console.log(req.query);
-  res.send('from login route');
+  const { username, password } = req.query;
+
+  let sql = `SELECT *  FROM Accounts WHERE ( username = '${username}');`;
+
+  db.query(sql, (err, result) => {
+    if (err) {
+      res.send(`Something went wrong error code: ${err.code}`);
+    }
+    if (result.rows.length) {
+      if (result.rows[0].password === password) {
+        res.send(true);
+      } else {
+        res.send('Password did not match');
+      }
+    } else {
+      res.send('User not found');
+    }
+  });
 };
 
 module.exports.createUser = (req, res) => {

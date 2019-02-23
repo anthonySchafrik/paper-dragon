@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { formFiller, LOGIN } from '../actions';
+import { userLogIn } from '../proxies/logIn';
 
 class HomePage extends Component {
   constructor(props) {
@@ -12,12 +13,20 @@ class HomePage extends Component {
       loggedIn: false
     };
 
+    this.handleLogin = this.handleLogin.bind(this);
     this.handleLoggedIn = this.handleLoggedIn.bind(this);
     this.handleLoginInfo = this.handleLoginInfo.bind(this);
   }
 
   handleLogin() {
-    console.log('clicked');
+    const { loginInfo } = this.props;
+    userLogIn(loginInfo).then(res => {
+      if (res.data === true) {
+        this.setState({ loggedIn: true });
+      } else {
+        alert(res.data);
+      }
+    });
   }
 
   handleLoginInfo(event) {
@@ -71,8 +80,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-  const { logIn } = state;
-  return { logIn };
+  const { loginInfo } = state;
+  return { loginInfo };
 };
 
 export default connect(
