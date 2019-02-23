@@ -60,7 +60,9 @@ class HomePage extends Component {
       return (
         <div>
           <button>Account Setting</button>
-          <button>Characters</button>
+          <Link to="characterPage">
+            <button>Characters</button>
+          </Link>
           <button>Log Out</button>
         </div>
       );
