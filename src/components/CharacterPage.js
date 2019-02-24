@@ -1,24 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { fetchCharacters } from '../proxies/fetchCharacters';
+
 class CharacterPage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { characters: [] };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { username } = this.props.loginInfo;
+    fetchCharacters(username).then(res => {
+      this.setState({ characters: [...res.data] });
+    });
+  }
 
   render() {
-    return (
-      <div>
-        <h3>Character Page</h3>
-        <ul>
-          <li>Character 1</li>
-          <li>Character 2</li>
-          <li>Character 3</li>
-        </ul>
-      </div>
-    );
+    const { characters } = this.state;
+
+    if (!characters.length) {
+      return <h3>LOADING...</h3>;
+    } else {
+      return (
+        <div>
+          <h3>Character Page</h3>
+          {characters.map(character => {
+            return (
+              <div>
+                <ul>
+                  <li>{character.name}</li>
+                  <li>{character.level}</li>
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
   }
 }
 

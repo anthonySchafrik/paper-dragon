@@ -21,9 +21,12 @@ class HomePage extends Component {
   handleLogin() {
     const { loginInfo } = this.props;
     userLogIn(loginInfo).then(res => {
-      if (res.data === true) {
+      debugger;
+      if (res.data.passwordCheck === true) {
+        this.props.formFiller('userid', res.data.userid, LOGIN);
         this.setState({ loggedIn: true });
       } else {
+        console.log(res.data);
         alert(res.data);
       }
     });

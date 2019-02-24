@@ -12,7 +12,7 @@ module.exports.logUserIn = (req, res) => {
     }
     if (result.rows.length) {
       if (result.rows[0].password === password) {
-        res.send(true);
+        res.send({ passwordCheck: true, userid: result.rows[0].id });
       } else {
         res.send('Password did not match');
       }

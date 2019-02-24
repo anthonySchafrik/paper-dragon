@@ -2,7 +2,8 @@ import { LOGIN } from '../actions';
 
 const INITIAL_STATE = {
   username: '',
-  password: ''
+  password: '',
+  userid: null
 };
 
 export default (state = INITIAL_STATE, action) => {
