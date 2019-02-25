@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchCharacters } from '../proxies/fetchCharacters';
+import CharacterList from './CharacterList';
 
 class CharacterPage extends Component {
   constructor(props) {
@@ -25,17 +27,11 @@ class CharacterPage extends Component {
     } else {
       return (
         <div>
-          <h3>Character Page</h3>
-          {characters.map(character => {
-            return (
-              <div>
-                <ul>
-                  <li>{character.name}</li>
-                  <li>Level {character.level}</li>
-                </ul>
-              </div>
-            );
-          })}
+          <Link to="createCharacter">
+            <button>Create new character</button>
+          </Link>
+
+          <CharacterList characters={characters} />
         </div>
       );
     }
