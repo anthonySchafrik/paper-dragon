@@ -11,8 +11,8 @@ class CharacterPage extends Component {
   }
 
   componentDidMount() {
-    const { username } = this.props.loginInfo;
-    fetchCharacters(username).then(res => {
+    const { userid } = this.props.loginInfo;
+    fetchCharacters(userid).then(res => {
       this.setState({ characters: [...res.data] });
     });
   }
@@ -31,7 +31,7 @@ class CharacterPage extends Component {
               <div>
                 <ul>
                   <li>{character.name}</li>
-                  <li>{character.level}</li>
+                  <li>Level {character.level}</li>
                 </ul>
               </div>
             );

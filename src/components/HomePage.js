@@ -21,7 +21,6 @@ class HomePage extends Component {
   handleLogin() {
     const { loginInfo } = this.props;
     userLogIn(loginInfo).then(res => {
-      debugger;
       if (res.data.passwordCheck === true) {
         this.props.formFiller('userid', res.data.userid, LOGIN);
         this.setState({ loggedIn: true });
