@@ -14,6 +14,7 @@ class CharacterPage extends Component {
 
   componentDidMount() {
     const { userid } = this.props.loginInfo;
+
     fetchCharacters(userid).then(res => {
       this.setState({ characters: [...res.data] });
     });
@@ -30,7 +31,6 @@ class CharacterPage extends Component {
           <Link to="createCharacter">
             <button>Create new character</button>
           </Link>
-
           <CharacterList characters={characters} />
         </div>
       );

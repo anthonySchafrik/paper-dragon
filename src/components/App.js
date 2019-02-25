@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import Character from './Character';
 import CharacterPage from './CharacterPage';
 import CreateCharacter from './CreateCharacter';
 import HomePage from './HomePage';
@@ -10,6 +11,7 @@ const App = () => {
   return (
     <div>
       <Switch>
+        <Route path="/character" component={Character} />
         <Route path="/createCharacter" component={CreateCharacter} />
         <Route path="/characterPage" component={CharacterPage} />
         <Route path="/signUp" component={SignUp} />

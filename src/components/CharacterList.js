@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CharacterList = ({ characters }) => {
   return (
@@ -11,6 +12,9 @@ const CharacterList = ({ characters }) => {
               <li>{character.name}</li>
               <li>Level {character.level}</li>
             </ul>
+            <Link to={{ pathname: 'character', state: { ...character } }}>
+              <button>Play</button>
+            </Link>
           </div>
         );
       })}
