@@ -9,10 +9,6 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      loggedIn: false
-    };
-
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLoggedIn = this.handleLoggedIn.bind(this);
     this.handleLoginInfo = this.handleLoginInfo.bind(this);
@@ -23,7 +19,7 @@ class HomePage extends Component {
     userLogIn(loginInfo).then(res => {
       if (res.data.passwordCheck === true) {
         this.props.formFiller('userid', res.data.userid, LOGIN);
-        this.setState({ loggedIn: true });
+        this.props.formFiller('isLoggedIn', true, LOGIN);
       } else {
         console.log(res.data);
         alert(res.data);
@@ -39,9 +35,9 @@ class HomePage extends Component {
 
   handleLoggedIn() {
     const { handleLoginInfo, handleLogin } = this;
-    const { loggedIn } = this.state;
+    const { isLoggedIn } = this.props.loginInfo;
 
-    if (!loggedIn) {
+    if (!isLoggedIn) {
       return (
         <div>
           <label>Username</label>
@@ -61,13 +57,15 @@ class HomePage extends Component {
     } else {
       return (
         <div>
-          <button>Account Setting</button>
+          <Link to="accountSetting">
+            <button>Account Setting</button>
+          </Link>
           <Link to="characterPage">
             <button>Characters</button>
           </Link>
           <button
             onClick={() => {
-              this.setState({ loggedIn: false });
+              this.props.formFiller('isLoggedIn', false, LOGIN);
             }}
           >
             Log Out
