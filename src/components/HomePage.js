@@ -57,19 +57,7 @@ class HomePage extends Component {
     } else {
       return (
         <div>
-          <Link to="accountSetting">
-            <button>Account Setting</button>
-          </Link>
-          <Link to="characterPage">
-            <button>Characters</button>
-          </Link>
-          <button
-            onClick={() => {
-              this.props.formFiller('isLoggedIn', false, LOGIN);
-            }}
-          >
-            Log Out
-          </button>
+          <h3>Tjhing</h3>
         </div>
       );
     }

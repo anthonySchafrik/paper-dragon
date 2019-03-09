@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+// import Dropzone from 'react-dropzone';
 
-export const AccountSetting = () => {
-  return <h3>This is the Account Setting Component</h3>;
-};
+class AccountSetting extends Component {
+  render() {
+    return <div>This is Account Setting</div>;
+  }
+}
+
+export default AccountSetting;
