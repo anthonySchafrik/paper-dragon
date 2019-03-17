@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { LOGIN } from '../actions/index';
+import { LOG_OUT } from '../actions/index';
 import { formFiller } from '../actions/index';
 
 const Header = ({ formFiller, loginInfo }) => {
@@ -19,13 +19,15 @@ const Header = ({ formFiller, loginInfo }) => {
       <Link to="characterPage">
         <button>Characters</button>
       </Link>
-      <button
-        onClick={() => {
-          formFiller('isLoggedIn', false, LOGIN);
-        }}
-      >
-        Log Out
-      </button>
+      <Link to="/">
+        <button
+          onClick={() => {
+            formFiller('isLoggedIn', false, LOG_OUT);
+          }}
+        >
+          Log Out
+        </button>
+      </Link>
     </div>
   ) : null;
 };

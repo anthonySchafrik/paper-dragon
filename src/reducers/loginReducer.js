@@ -1,4 +1,4 @@
-import { LOGIN } from '../actions';
+import { LOGIN, LOG_OUT } from '../actions';
 
 const INITIAL_STATE = {
   username: '',
@@ -13,6 +13,8 @@ export default (state = INITIAL_STATE, action) => {
   switch (type) {
     case LOGIN:
       return { ...state, ...payload };
+    case LOG_OUT:
+      return { ...INITIAL_STATE };
     default:
       return state;
   }
