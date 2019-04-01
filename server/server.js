@@ -17,8 +17,14 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use(apiBase, characterRoute);
+
 app.use(apiBase, userRoute);
+
 app.use(apiBase, monsterRoute);
+
+app.get('/*', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 app.listen(port, () => {
   log(`server is listing on port ${port}`);

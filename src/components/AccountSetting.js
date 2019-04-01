@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Dropzone from 'react-dropzone';
 
 class AccountSetting extends Component {
   render() {

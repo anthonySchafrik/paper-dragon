@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CreateCharacter extends Component {
+class CreateCharacterPage extends Component {
   render() {
     return (
       <div>
@@ -18,10 +18,11 @@ class CreateCharacter extends Component {
               Mage
             </option>
           </select>
+          <button>Create Character</button>
         </div>
       </div>
     );
   }
 }
 
-export default CreateCharacter;
+export default CreateCharacterPage;

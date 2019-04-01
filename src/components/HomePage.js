@@ -57,7 +57,10 @@ class HomePage extends Component {
     } else {
       return (
         <div>
-          <h3>Tjhing</h3>
+          <h3>News and Updates</h3>
+          <div>
+            <p>Comming soon a game.</p>
+          </div>
         </div>
       );
     }
