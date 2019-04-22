@@ -12,30 +12,32 @@ class CharacterPage extends Component {
     this.state = { characters: [] };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     const { userid } = this.props.loginInfo;
 
     fetchCharacters(userid).then(res => {
       this.setState({ characters: [...res.data] });
     });
-  }
+  };
 
-  render() {
+  render = () => {
     const { characters } = this.state;
 
-    if (!characters.length) {
-      return <h3>LOADING...</h3>;
-    } else {
-      return (
-        <div>
-          <Link to="createCharacter">
-            <button>Create new character</button>
-          </Link>
-          <CharacterList characters={characters} />
-        </div>
-      );
-    }
-  }
+    return (
+      <div>
+        {!characters.length ? (
+          <h3>LOADING...</h3>
+        ) : (
+          <div>
+            <Link to="createCharacter">
+              <button>Create new character</button>
+            </Link>
+            <CharacterList characters={characters} />
+          </div>
+        )}
+      </div>
+    );
+  };
 }
 
 const mapStateToProps = state => {

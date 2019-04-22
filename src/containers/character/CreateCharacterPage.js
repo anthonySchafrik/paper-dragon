@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createCharacter } from '../../proxies/createCharacter';
 
 class CreateCharacterPage extends Component {
   render() {

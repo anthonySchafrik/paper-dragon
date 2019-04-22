@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Character = props => {
-  const { id, userid, name, level, hp, exp } = props.location.state;
+const Character = ({ character }) => {
+  const { id, userid, name, level, hp, exp } = character;
+
   return (
     <div>
       <h3>{name}</h3>
@@ -12,4 +14,9 @@ const Character = props => {
   );
 };
 
-export default Character;
+const mapStateToProps = state => {
+  const { selectedCharacter } = state.character;
+  return { character: selectedCharacter };
+};
+
+export default connect(mapStateToProps)(Character);

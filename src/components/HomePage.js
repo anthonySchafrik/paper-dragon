@@ -6,15 +6,7 @@ import { formFiller, LOGIN } from '../actions';
 import { userLogIn } from '../proxies/logIn';
 
 class HomePage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLoggedIn = this.handleLoggedIn.bind(this);
-    this.handleLoginInfo = this.handleLoginInfo.bind(this);
-  }
-
-  handleLogin() {
+  handleLogin = () => {
     const { loginInfo } = this.props;
     userLogIn(loginInfo).then(res => {
       if (res.data.passwordCheck === true) {
@@ -25,57 +17,47 @@ class HomePage extends Component {
         alert(res.data);
       }
     });
-  }
+  };
 
-  handleLoginInfo(event) {
+  handleLoginInfo = event => {
     const { id: key, value } = event.target;
 
     this.props.formFiller(key, value, LOGIN);
-  }
+  };
 
-  handleLoggedIn() {
+  render = () => {
     const { handleLoginInfo, handleLogin } = this;
     const { isLoggedIn } = this.props.loginInfo;
-
-    if (!isLoggedIn) {
-      return (
-        <div>
-          <label>Username</label>
-          <br />
-          <input type="text" onChange={handleLoginInfo} id="username" />
-          <br />
-          <label>Password</label>
-          <br />
-          <input type="password" onChange={handleLoginInfo} id="password" />
-          <br />
-          <button onClick={handleLogin}>Login</button>
-          <Link to="/signUp">
-            <button>Sign Up</button>
-          </Link>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <h3>News and Updates</h3>
-          <div>
-            <p>Comming soon a game.</p>
-          </div>
-        </div>
-      );
-    }
-  }
-
-  render() {
-    const { handleLoggedIn } = this;
 
     return (
       <div>
         <h2>Paper Dragon</h2>
-        {handleLoggedIn()}
+        {!isLoggedIn ? (
+          <div>
+            <label>Username</label>
+            <br />
+            <input type="text" onChange={handleLoginInfo} id="username" />
+            <br />
+            <label>Password</label>
+            <br />
+            <input type="password" onChange={handleLoginInfo} id="password" />
+            <br />
+            <button onClick={handleLogin}>Login</button>
+            <Link to="/signUp">
+              <button>Sign Up</button>
+            </Link>
+          </div>
+        ) : (
+          <div>
+            <h3>News and Updates</h3>
+            <div>
+              <p>Comming soon a game.</p>
+            </div>
+          </div>
+        )}
       </div>
     );
-  }
+  };
 }
 
 const mapStateToProps = state => {

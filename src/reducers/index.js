@@ -5,17 +5,17 @@ import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import thunk from 'redux-thunk';
 
-import characterInfo from './characterReducer';
+import character from './characterReducer';
 import loginInfo from './loginReducer';
 import signUp from './signUpReducer';
 
-const rootReducer = combineReducers({ characterInfo, loginInfo, signUp });
+const rootReducer = combineReducers({ character, loginInfo, signUp });
 
 const persistConfig = {
   key: 'root',
   storage,
-  stateReconciler: autoMergeLevel2,
-  blacklist: ['loginInfo']
+  stateReconciler: autoMergeLevel2
+  // blacklist: ['loginInfo']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

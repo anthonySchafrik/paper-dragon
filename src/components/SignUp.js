@@ -5,14 +5,7 @@ import { formFiller, SIGN_UP } from '../actions';
 import { createUser } from '../proxies/createUser';
 
 class SignUp extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleCreateUser = this.handleCreateUser.bind(this);
-    this.handleSignInfo = this.handleSignInfo.bind(this);
-  }
-
-  handleCreateUser() {
+  handleCreateUser = () => {
     const { passwordChecker } = this;
     const { userName, firstName, password, passwordCheck } = this.props.signUp;
 
@@ -25,19 +18,19 @@ class SignUp extends Component {
     } else {
       alert('Password did not matched.');
     }
-  }
+  };
 
-  handleSignInfo(event) {
+  handleSignInfo = event => {
     const { id: key, value } = event.target;
     this.props.formFiller(key, value, SIGN_UP);
-  }
+  };
 
-  passwordChecker(pass, passCheck) {
+  passwordChecker = (pass, passCheck) => {
     if (pass === passCheck) {
       return true;
     }
     return false;
-  }
+  };
 
   render() {
     const { handleSignInfo, handleCreateUser } = this;

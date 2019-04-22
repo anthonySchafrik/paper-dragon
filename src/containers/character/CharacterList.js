@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { selectedCharacter } from '../../actions';
 
 const CharacterList = ({ characters }) => {
   return (
@@ -12,9 +14,7 @@ const CharacterList = ({ characters }) => {
               <li>{character.name}</li>
               <li>Level {character.level}</li>
             </ul>
-            <Link to={{ pathname: 'character', state: { ...character } }}>
-              <button>Play</button>
-            </Link>
+            <button onClick={() => selectedCharacter(character)}>Play</button>
           </div>
         );
       })}
@@ -22,4 +22,7 @@ const CharacterList = ({ characters }) => {
   );
 };
 
-export default CharacterList;
+export default connect(
+  null,
+  { selectedCharacter }
+)(CharacterList);
