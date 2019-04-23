@@ -17,12 +17,16 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
-  console.log('in the reducer');
+
   switch (type) {
     case CHARACTER_INFO:
       return { ...state, ...payload };
     case SELECTED_CHARACTER:
-      return { ...state, selectedCharacter: { payload }, isSelected: true };
+      return {
+        ...state,
+        selectedCharacter: { ...payload.character },
+        isSelected: true
+      };
     default:
       return state;
   }

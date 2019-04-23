@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { selectedCharacter } from '../../actions';
 
-const CharacterList = ({ characters }) => {
+const CharacterList = ({ characters, selectedCharacter }) => {
   return (
     <div>
       <h3>Character List</h3>

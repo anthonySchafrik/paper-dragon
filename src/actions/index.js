@@ -15,9 +15,8 @@ export const formFiller = (key, value, type) => {
 };
 
 export const selectedCharacter = character => {
-  console.log('action fired');
   return {
     type: SELECTED_CHARACTER,
-    payload: character
+    payload: { character }
   };
 };
