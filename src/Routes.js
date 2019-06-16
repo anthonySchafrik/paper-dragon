@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import AccountSetting from './components/AccountSetting';
-import Character from './containers/character/Character';
-import CharacterPage from './containers/character/CharacterPage';
-import CreateCharacterPage from './containers/character/CreateCharacterPage';
+import Character from './components/character/Character';
+import CharacterPage from './components/character/CharacterPage';
+import CreateCharacterPage from './components/character/CreateCharacterPage';
 import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 
