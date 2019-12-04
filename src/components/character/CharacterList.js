@@ -19,7 +19,7 @@ const CharacterList = ({ characters, selectedCharacter }) => {
               <li>{character.name}</li>
               <li>Level {character.level}</li>
             </ul>
-            <Link to="character">
+            <Link to="/character">
               <button onClick={handleCharacterSelect(character)}>Play</button>
             </Link>
           </div>

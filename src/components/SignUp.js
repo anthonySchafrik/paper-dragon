@@ -5,16 +5,25 @@ import { formFiller, SIGN_UP } from '../actions';
 import { createUser } from '../proxies/createUser';
 
 class SignUp extends Component {
-  handleCreateUser = () => {
+  handleCreateUser = async () => {
     const { passwordChecker } = this;
-    const { userName, firstName, password, passwordCheck } = this.props.signUp;
+
+    const { history, signUp } = this.props;
+
+    const { userName, firstName, password, passwordCheck } = signUp;
 
     let newUser = { userName, firstName, password };
 
+    let user;
+
     if (passwordChecker(password, passwordCheck)) {
-      createUser(newUser).then(res => {
-        alert(res.data);
-      });
+      user = await createUser(newUser);
+
+      const { data } = user;
+
+      alert(data);
+
+      history.push('/');
     } else {
       alert('Password did not matched.');
     }
@@ -79,7 +88,4 @@ const mapStateToProps = state => {
   const { signUp } = state;
   return { signUp };
 };
-export default connect(
-  mapStateToProps,
-  { formFiller }
-)(SignUp);
+export default connect(mapStateToProps, { formFiller })(SignUp);

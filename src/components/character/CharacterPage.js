@@ -22,13 +22,13 @@ class CharacterPage extends Component {
 
     return (
       <div>
+        <Link to="/createCharacter">
+          <button>Create new character</button>
+        </Link>
         {!characters.length ? (
           <h3>LOADING...</h3>
         ) : (
           <div>
-            <Link to="createCharacter">
-              <button>Create new character</button>
-            </Link>
             <CharacterList characters={characters} />
           </div>
         )}

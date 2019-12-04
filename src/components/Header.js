@@ -13,10 +13,10 @@ const Header = ({ formFiller, loginInfo }) => {
       <Link to="/">
         <button>Home</button>
       </Link>
-      <Link to="accountSetting">
+      <Link to="/accountSetting">
         <button>Account Setting</button>
       </Link>
-      <Link to="characterPage">
+      <Link to="/characterPage">
         <button>Characters</button>
       </Link>
       <Link to="/">
@@ -37,7 +37,4 @@ const mapStateToProps = state => {
   return { loginInfo };
 };
 
-export default connect(
-  mapStateToProps,
-  { formFiller }
-)(Header);
+export default connect(mapStateToProps, { formFiller })(Header);
