@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Character = ({ character }) => {
-  const { id, userid, name, level, hp, exp } = character;
+  const { name, level, hp, exp } = character;
 
   return (
     <div>
