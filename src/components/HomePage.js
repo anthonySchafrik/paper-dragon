@@ -31,7 +31,7 @@ class HomePage extends Component {
 
     return (
       <div>
-        <h2>Paper Dragon</h2>
+        <h2>Paper Dragon!</h2>
         {!isLoggedIn ? (
           <div>
             <label>Username</label>
@@ -65,9 +65,6 @@ const mapStateToProps = state => {
   return { loginInfo };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    formFiller
-  }
-)(HomePage);
+export default connect(mapStateToProps, {
+  formFiller
+})(HomePage);
