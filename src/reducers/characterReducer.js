@@ -3,11 +3,11 @@ import { CHARACTER_INFO, SELECTED_CHARACTER } from '../actions';
 const INITIAL_STATE = {
   isSelected: false,
   selectedCharacter: {
-    userId: null,
+    userId: NaN,
     character: '',
-    level: null,
-    hp: null,
-    exp: null
+    level: NaN,
+    hp: NaN,
+    exp: NaN
   },
   createCharacter: {
     name: '',

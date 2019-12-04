@@ -1,15 +1,21 @@
 const { db } = require('../../database/pg');
 
-module.exports.fetchCharacters = (req, res) => {
+module.exports.fetchCharacters = async (req, res) => {
   const { userid } = req.query;
 
-  let sql = `SELECT * FROM Characters WHERE (userid = '${userid}');`;
+  let sql = `SELECT name, level, hp, exp FROM Characters WHERE (userid = '${userid}');`;
 
-  db.query(sql, (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result.rows);
-    }
-  });
+  let characters;
+
+  try {
+    characters = await db.query(sql);
+
+    const { rows } = characters;
+
+    res.send(rows);
+  } catch (error) {
+    console.log(error.message);
+
+    res.send(error.statusCode);
+  }
 };

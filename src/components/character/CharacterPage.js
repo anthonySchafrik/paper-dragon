@@ -6,18 +6,15 @@ import { fetchCharacters } from '../../proxies/fetchCharacters';
 import CharacterList from './CharacterList';
 
 class CharacterPage extends Component {
-  constructor(props) {
-    super(props);
+  state = { characters: [] };
 
-    this.state = { characters: [] };
-  }
-
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const { userid } = this.props.loginInfo;
 
-    fetchCharacters(userid).then(res => {
-      this.setState({ characters: [...res.data] });
-    });
+    const chars = await fetchCharacters(userid);
+    const { data } = chars;
+
+    this.setState({ characters: data });
   };
 
   render = () => {
