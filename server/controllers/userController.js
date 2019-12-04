@@ -36,7 +36,7 @@ module.exports.createUser = (req, res) => {
         res.send(`Something went wrong error code ${err.code}`);
       }
     } else {
-      log('inserted Group sotred', result);
+      log(`Created user ${userName}`);
       res.send('User created');
     }
   });
