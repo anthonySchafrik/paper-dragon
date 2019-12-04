@@ -65,9 +65,6 @@ const mapStateToProps = state => {
   return { loginInfo };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    formFiller
-  }
-)(HomePage);
+export default connect(mapStateToProps, {
+  formFiller
+})(HomePage);
