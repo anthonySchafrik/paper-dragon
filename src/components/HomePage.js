@@ -31,7 +31,7 @@ class HomePage extends Component {
 
     return (
       <div>
-        <h2>Paper Dragon!</h2>
+        <h2>Paper Dragon</h2>
         {!isLoggedIn ? (
           <div>
             <label>Username</label>
