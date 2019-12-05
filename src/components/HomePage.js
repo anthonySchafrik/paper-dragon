@@ -13,7 +13,6 @@ class HomePage extends Component {
         this.props.formFiller('userid', res.data.userid, LOGIN);
         this.props.formFiller('isLoggedIn', true, LOGIN);
       } else {
-        console.log(res.data);
         alert(res.data);
       }
     });

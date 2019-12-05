@@ -1,4 +1,5 @@
 const { db } = require('../../database/pg');
+const log = require('../utils').log;
 
 module.exports.fetchCharacters = async (req, res) => {
   const { userid } = req.query;
@@ -14,7 +15,7 @@ module.exports.fetchCharacters = async (req, res) => {
 
     res.send(rows);
   } catch (error) {
-    console.log(error.message);
+    log(error.message);
 
     res.send(error.statusCode);
   }

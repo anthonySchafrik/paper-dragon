@@ -1,5 +1,5 @@
 const { db } = require('../../database/pg');
-const log = console.log;
+const log = require('../utils').log;
 
 module.exports.logUserIn = async (req, res) => {
   const { username, password } = req.query;
@@ -23,7 +23,7 @@ module.exports.logUserIn = async (req, res) => {
       }
     }
   } catch (error) {
-    console.log(error.message);
+    log(error.message);
 
     res.send(error.statusCode);
   }
