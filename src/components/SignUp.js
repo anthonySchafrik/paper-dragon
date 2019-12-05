@@ -77,6 +77,7 @@ class SignUp extends Component {
           id="passwordCheck"
           maxLength="15"
         />
+
         <div>
           <button onClick={handleCreateUser}>Create Account</button>
         </div>
@@ -84,8 +85,10 @@ class SignUp extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   const { signUp } = state;
   return { signUp };
 };
+
 export default connect(mapStateToProps, { formFiller })(SignUp);

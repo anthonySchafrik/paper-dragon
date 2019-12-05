@@ -21,6 +21,8 @@ module.exports.logUserIn = async (req, res) => {
       } else {
         res.send('Password did not match');
       }
+    } else {
+      res.send('No user found');
     }
   } catch (error) {
     log(error.message);

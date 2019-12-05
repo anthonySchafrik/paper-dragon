@@ -14,7 +14,7 @@ client.connect(err => {
 });
 
 let sqlUserAccount =
-  'CREATE TABLE Accounts (id SERIAL primary key, username VARCHAR(15) UNIQUE, firstname VARCHAR(255),  password VARCHAR(15))';
+  'CREATE TABLE Accounts (id SERIAL primary key, username VARCHAR(15) UNIQUE, firstname VARCHAR(15),  password VARCHAR(15))';
 
 client.query(sqlUserAccount, err => {
   if (err) {
@@ -30,7 +30,7 @@ client.query(sqlUserAccount, err => {
 });
 
 let sqlCharacters =
-  'CREATE TABLE Characters ( id SERIAL primary key, userid INT references Accounts(id), name VARCHAR(15) UNIQUE, level INT, hp INT, exp INT)';
+  'CREATE TABLE Characters ( id SERIAL primary key, userid INT references Accounts(id), name VARCHAR(15) UNIQUE, level INT, hp INT, exp INT, type VARCHAR(10))';
 
 client.query(sqlCharacters, err => {
   if (err) {
