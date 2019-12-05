@@ -10,7 +10,7 @@ module.exports.logUserIn = async (req, res) => {
 
   try {
     user = await db.query(sql);
-    console.log(user);
+
     const { rows } = user;
 
     if (rows.length) {
@@ -29,22 +29,24 @@ module.exports.logUserIn = async (req, res) => {
   }
 };
 
-module.exports.createUser = (req, res) => {
+module.exports.createUser = async (req, res) => {
   const { userName, firstName, password } = req.body;
 
   let sql = `INSERT INTO Accounts (username, firstname, password) VALUES('${userName}', '${firstName}', '${password}');`;
 
-  db.query(sql, (err, result) => {
-    if (err) {
-      log(`ERROR creating user => ${err}`);
-      if (err.code === '23505') {
+  try {
+    await db.query(sql);
+
+    res.send('User created');
+  } catch (error) {
+    if (error) {
+      log(`ERROR creating user => ${error}`);
+
+      if (error.code === '23505') {
         res.send('User name all ready Taken');
       } else {
-        res.send(`Something went wrong error code ${err.code}`);
+        res.send(`Something went wrong error code ${error.code}`);
       }
-    } else {
-      log(`Created user ${userName}`);
-      res.send('User created');
     }
-  });
+  }
 };
