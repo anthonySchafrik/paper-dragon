@@ -1,25 +1,32 @@
 const { db } = require('../../database/pg');
 const log = console.log;
 
-module.exports.logUserIn = (req, res) => {
+module.exports.logUserIn = async (req, res) => {
   const { username, password } = req.query;
 
-  let sql = `SELECT *  FROM Accounts WHERE ( username = '${username}');`;
+  let sql = `SELECT id, username, firstname, password  FROM Accounts WHERE ( username = '${username}');`;
 
-  db.query(sql, (err, result) => {
-    if (err) {
-      res.send(`Something went wrong error code: ${err.code}`);
-    }
-    if (result.rows.length) {
-      if (result.rows[0].password === password) {
-        res.send({ passwordCheck: true, userid: result.rows[0].id });
+  let user;
+
+  try {
+    user = await db.query(sql);
+    console.log(user);
+    const { rows } = user;
+
+    if (rows.length) {
+      const { password: userPw, id } = rows[0];
+
+      if (userPw === password) {
+        res.send({ passwordCheck: true, userid: id });
       } else {
         res.send('Password did not match');
       }
-    } else {
-      res.send('User not found');
     }
-  });
+  } catch (error) {
+    console.log(error.message);
+
+    res.send(error.statusCode);
+  }
 };
 
 module.exports.createUser = (req, res) => {
