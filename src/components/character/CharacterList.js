@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 import { selectedCharacter } from '../../actions';
 
 const CharacterList = ({ characters, selectedCharacter }) => {
-  const handleCharacterSelect = character => () => {
-    selectedCharacter(character);
-  };
+  const handleCharacterSelect = character => () => selectedCharacter(character);
 
   return (
     <div>

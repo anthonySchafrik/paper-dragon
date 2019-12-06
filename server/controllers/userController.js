@@ -1,5 +1,5 @@
 const { db } = require('../../database/pg');
-const log = console.log;
+const log = require('../utils').log;
 
 module.exports.logUserIn = async (req, res) => {
   const { username, password } = req.query;
@@ -21,9 +21,11 @@ module.exports.logUserIn = async (req, res) => {
       } else {
         res.send('Password did not match');
       }
+    } else {
+      res.send('No user found');
     }
   } catch (error) {
-    console.log(error.message);
+    log(error.message);
 
     res.send(error.statusCode);
   }

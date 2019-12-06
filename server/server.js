@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
+const log = require('./utils').log;
 
 const characterRoute = require('./routes/characterRoute');
 const monsterRoute = require('./routes/monsterRoute');
@@ -9,7 +10,6 @@ const userRoute = require('./routes/userRoute');
 const app = express();
 let port = 2020;
 
-const log = console.log;
 const apiBase = '/api/v1';
 
 app.use(bodyParser.json());

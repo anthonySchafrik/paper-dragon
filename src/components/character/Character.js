@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Character = ({ character }) => {
-  const { name, level, hp, exp } = character;
+  const { name, level, hp, exp, type } = character;
 
   return (
     <div>
@@ -10,6 +10,7 @@ const Character = ({ character }) => {
       <h5>Health => {hp}</h5>
       <h5>Level => {level}</h5>
       <h5>Exp => {exp}</h5>
+      <h5>Type => {type}</h5>
     </div>
   );
 };

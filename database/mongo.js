@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const log = require('../server/utils').log;
+
 let conString = 'mongodb://localhost/PaperDragon';
 
 let db = mongoose.connection;
-mongoose.connect(conString, { useNewUrlParser: true });
+mongoose.connect(conString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 db.on('error', console.error.bind(console, 'mongoDB connection error'));
 db.once('open', () => console.log('mongoDB successfully connected'));
-
-const log = console.log;
 
 let monsterSchema = new Schema({
   type: String,

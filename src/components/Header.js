@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { LOG_OUT } from '../actions/index';
-import { formFiller } from '../actions/index';
+import { LOG_OUT, formFiller } from '../actions/index';
 
 const Header = ({ formFiller, loginInfo }) => {
   const { isLoggedIn } = loginInfo;
