@@ -13,6 +13,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (type) {
     case SIGN_UP:
       return { ...state, ...payload };
+
     default:
       return state;
   }

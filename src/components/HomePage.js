@@ -3,29 +3,36 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { formFiller, LOGIN } from '../actions';
-import { userLogIn } from '../proxies/logIn';
+import { userLogIn } from '../proxies/User';
 
 class HomePage extends Component {
-  handleLogin = () => {
-    const { loginInfo } = this.props;
-    userLogIn(loginInfo).then(res => {
-      if (res.data.passwordCheck === true) {
-        this.props.formFiller('userid', res.data.userid, LOGIN);
-        this.props.formFiller('isLoggedIn', true, LOGIN);
-      } else {
-        alert(res.data);
-      }
-    });
+  handleLogin = async () => {
+    const { loginInfo, formFiller } = this.props;
+
+    const loginCheck = await userLogIn(loginInfo);
+
+    const { passwordCheck, userid } = loginCheck.data;
+
+    if (passwordCheck === true) {
+      formFiller('userid', userid, LOGIN);
+
+      formFiller('isLoggedIn', true, LOGIN);
+    } else {
+      alert(loginCheck.data);
+    }
   };
 
   handleLoginInfo = event => {
     const { id: key, value } = event.target;
 
-    this.props.formFiller(key, value, LOGIN);
+    const { formFiller } = this.props;
+
+    formFiller(key, value, LOGIN);
   };
 
   render = () => {
     const { handleLoginInfo, handleLogin } = this;
+
     const { isLoggedIn } = this.props.loginInfo;
 
     return (

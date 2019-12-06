@@ -16,33 +16,33 @@ client.connect(err => {
 let sqlUserAccount =
   'CREATE TABLE Accounts (id SERIAL primary key, username VARCHAR(15) UNIQUE, firstname VARCHAR(15),  password VARCHAR(15))';
 
-client.query(sqlUserAccount, err => {
-  if (err) {
-    if (err.code === '42P07') {
-      log('Accounts Table all ready there');
-    } else {
-      log(`Error in database => ${err}`);
-      throw err;
-    }
-  } else {
-    log('Accounts Table created');
-  }
-});
+// client.query(sqlUserAccount, err => {
+//   if (err) {
+//     if (err.code === '42P07') {
+//       log('Accounts Table all ready there');
+//     } else {
+//       log(`Error in database => ${err}`);
+//       throw err;
+//     }
+//   } else {
+//     log('Accounts Table created');
+//   }
+// });
 
 let sqlCharacters =
   'CREATE TABLE Characters ( id SERIAL primary key, userid INT references Accounts(id), name VARCHAR(15) UNIQUE, level INT, hp INT, exp INT, type VARCHAR(10))';
 
-client.query(sqlCharacters, err => {
-  if (err) {
-    if (err.code === '42P07') {
-      log('Characters Table all ready there');
-    } else {
-      log(`Error in database => ${err}`);
-      throw err;
-    }
-  } else {
-    log('Characters Table created');
-  }
-});
+// client.query(sqlCharacters, err => {
+//   if (err) {
+//     if (err.code === '42P07') {
+//       log('Characters Table all ready there');
+//     } else {
+//       log(`Error in database => ${err}`);
+//       throw err;
+//     }
+//   } else {
+//     log('Characters Table created');
+//   }
+// });
 
 module.exports.db = client;

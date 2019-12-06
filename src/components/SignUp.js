@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { formFiller, SIGN_UP } from '../actions';
-import { createUser } from '../proxies/createUser';
+import { createUser } from '../proxies/User';
 
 class SignUp extends Component {
+  state = { userName: '', firstName: '', password: '' };
+
   handleCreateUser = async () => {
     const { passwordChecker } = this;
 
@@ -31,7 +33,10 @@ class SignUp extends Component {
 
   handleSignInfo = event => {
     const { id: key, value } = event.target;
-    this.props.formFiller(key, value, SIGN_UP);
+
+    const { formFiller } = this.props;
+
+    formFiller(key, value, SIGN_UP);
   };
 
   passwordChecker = (pass, passCheck) => {
@@ -43,6 +48,7 @@ class SignUp extends Component {
 
   render() {
     const { handleSignInfo, handleCreateUser } = this;
+
     return (
       <div>
         <label>UserName</label>

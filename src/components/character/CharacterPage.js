@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchCharacters } from '../../proxies/fetchCharacters';
+import { fetchCharacters } from '../../proxies/Character';
 import CharacterList from './CharacterList';
 
 class CharacterPage extends Component {

@@ -21,12 +21,14 @@ export default (state = INITIAL_STATE, action) => {
   switch (type) {
     case CHARACTER_INFO:
       return { ...state, ...payload };
+
     case SELECTED_CHARACTER:
       return {
         ...state,
         selectedCharacter: { ...payload.character },
         isSelected: true
       };
+
     default:
       return state;
   }
