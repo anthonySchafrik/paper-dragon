@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchCharacters } from '../../proxies/fetchCharacters';
+import { fetchCharacters } from '../../proxies/Character';
 import CharacterList from './CharacterList';
 
 class CharacterPage extends Component {
@@ -22,13 +22,13 @@ class CharacterPage extends Component {
 
     return (
       <div>
+        <Link to="/createCharacter">
+          <button>Create new character</button>
+        </Link>
         {!characters.length ? (
           <h3>LOADING...</h3>
         ) : (
           <div>
-            <Link to="createCharacter">
-              <button>Create new character</button>
-            </Link>
             <CharacterList characters={characters} />
           </div>
         )}

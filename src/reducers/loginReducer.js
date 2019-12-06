@@ -13,8 +13,10 @@ export default (state = INITIAL_STATE, action) => {
   switch (type) {
     case LOGIN:
       return { ...state, ...payload };
+
     case LOG_OUT:
       return { ...INITIAL_STATE };
+
     default:
       return state;
   }

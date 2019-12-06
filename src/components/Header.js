@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { LOG_OUT } from '../actions/index';
-import { formFiller } from '../actions/index';
+import { LOG_OUT, formFiller } from '../actions/index';
 
 const Header = ({ formFiller, loginInfo }) => {
   const { isLoggedIn } = loginInfo;
@@ -13,10 +12,10 @@ const Header = ({ formFiller, loginInfo }) => {
       <Link to="/">
         <button>Home</button>
       </Link>
-      <Link to="accountSetting">
+      <Link to="/accountSetting">
         <button>Account Setting</button>
       </Link>
-      <Link to="characterPage">
+      <Link to="/characterPage">
         <button>Characters</button>
       </Link>
       <Link to="/">
@@ -37,7 +36,4 @@ const mapStateToProps = state => {
   return { loginInfo };
 };
 
-export default connect(
-  mapStateToProps,
-  { formFiller }
-)(Header);
+export default connect(mapStateToProps, { formFiller })(Header);

@@ -2,19 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { formFiller, SIGN_UP } from '../actions';
-import { createUser } from '../proxies/createUser';
+import { createUser } from '../proxies/User';
 
 class SignUp extends Component {
-  handleCreateUser = () => {
+  state = { userName: '', firstName: '', password: '' };
+
+  handleCreateUser = async () => {
     const { passwordChecker } = this;
-    const { userName, firstName, password, passwordCheck } = this.props.signUp;
+
+    const { history, signUp } = this.props;
+
+    const { userName, firstName, password, passwordCheck } = signUp;
 
     let newUser = { userName, firstName, password };
 
+    let user;
+
     if (passwordChecker(password, passwordCheck)) {
-      createUser(newUser).then(res => {
-        alert(res.data);
-      });
+      user = await createUser(newUser);
+
+      const { data } = user;
+
+      alert(data);
+
+      history.push('/');
     } else {
       alert('Password did not matched.');
     }
@@ -22,7 +33,10 @@ class SignUp extends Component {
 
   handleSignInfo = event => {
     const { id: key, value } = event.target;
-    this.props.formFiller(key, value, SIGN_UP);
+
+    const { formFiller } = this.props;
+
+    formFiller(key, value, SIGN_UP);
   };
 
   passwordChecker = (pass, passCheck) => {
@@ -34,6 +48,7 @@ class SignUp extends Component {
 
   render() {
     const { handleSignInfo, handleCreateUser } = this;
+
     return (
       <div>
         <label>UserName</label>
@@ -68,6 +83,7 @@ class SignUp extends Component {
           id="passwordCheck"
           maxLength="15"
         />
+
         <div>
           <button onClick={handleCreateUser}>Create Account</button>
         </div>
@@ -75,11 +91,10 @@ class SignUp extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   const { signUp } = state;
   return { signUp };
 };
-export default connect(
-  mapStateToProps,
-  { formFiller }
-)(SignUp);
+
+export default connect(mapStateToProps, { formFiller })(SignUp);

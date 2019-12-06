@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 import { selectedCharacter } from '../../actions';
 
 const CharacterList = ({ characters, selectedCharacter }) => {
-  const handleCharacterSelect = character => () => {
-    selectedCharacter(character);
-  };
+  const handleCharacterSelect = character => () => selectedCharacter(character);
 
   return (
     <div>
@@ -19,7 +17,7 @@ const CharacterList = ({ characters, selectedCharacter }) => {
               <li>{character.name}</li>
               <li>Level {character.level}</li>
             </ul>
-            <Link to="character">
+            <Link to="/character">
               <button onClick={handleCharacterSelect(character)}>Play</button>
             </Link>
           </div>
