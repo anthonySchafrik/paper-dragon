@@ -1,8 +1,6 @@
 import { LOGIN, LOG_OUT } from '../actions';
 
 const INITIAL_STATE = {
-  username: '',
-  password: '',
   userid: null,
   isLoggedIn: false
 };
