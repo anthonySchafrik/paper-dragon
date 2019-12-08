@@ -1,18 +1,19 @@
-import { SIGN_UP } from '../actions';
+import { LOGIN, LOG_OUT } from '../actions';
 
 const INITIAL_STATE = {
-  userName: '',
-  firstName: '',
-  password: '',
-  passwordCheck: ''
+  userid: null,
+  isLoggedIn: false
 };
 
 export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case SIGN_UP:
+    case LOGIN:
       return { ...state, ...payload };
+
+    case LOG_OUT:
+      return { ...INITIAL_STATE };
 
     default:
       return state;

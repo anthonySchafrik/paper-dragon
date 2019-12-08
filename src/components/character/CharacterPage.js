@@ -9,7 +9,7 @@ class CharacterPage extends Component {
   state = { characters: [] };
 
   componentDidMount = async () => {
-    const { userid } = this.props.loginInfo;
+    const { userid } = this.props.user;
 
     const chars = await fetchCharacters(userid);
     const { data } = chars;
@@ -38,8 +38,8 @@ class CharacterPage extends Component {
 }
 
 const mapStateToProps = state => {
-  const { characterInfo, loginInfo } = state;
-  return { characterInfo, loginInfo };
+  const { characterInfo, user } = state;
+  return { characterInfo, user };
 };
 
 export default connect(mapStateToProps)(CharacterPage);

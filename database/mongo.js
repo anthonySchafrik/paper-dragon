@@ -11,7 +11,7 @@ mongoose.connect(conString, {
 });
 
 db.on('error', console.error.bind(console, 'mongoDB connection error'));
-db.once('open', () => console.log('mongoDB successfully connected'));
+db.once('open', () => log('mongoDB successfully connected'));
 
 let monsterSchema = new Schema({
   type: String,
@@ -29,6 +29,6 @@ let Monster = mongoose.model('Monster', monsterSchema);
 
 // fireDragon.save((err, fireDragon) => {
 //   if (err) {
-//     console.log(err);
+//     log(err);
 //   }
 // });

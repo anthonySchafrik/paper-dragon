@@ -13,8 +13,17 @@ class CreateCharacterPage extends Component {
   };
 
   handleCreateCharacter = async () => {
-    console.log('fired');
-    // await createCharacter();
+    const { name, type } = this.state;
+
+    const { history, user } = this.props;
+
+    const { userid } = user;
+
+    const newCharacter = await createCharacter({ name, type, userid });
+
+    alert(newCharacter.data);
+
+    history.push('/characterPage');
   };
 
   render() {
@@ -28,7 +37,7 @@ class CreateCharacterPage extends Component {
           <input id="name" type="text" onChange={handleCharacterCreate} />
           <label>Select Character Type </label>
 
-          <select onChange={handleCharacterCreate}>
+          <select id="type" onChange={handleCharacterCreate}>
             <option value="melee">Melee</option>
             <option value="range">Range</option>
             <option value="mage">Mage</option>
@@ -42,7 +51,8 @@ class CreateCharacterPage extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  const { user } = state;
+  return { user };
 };
 
 export default connect(mapStateToProps, { createCharacter })(

@@ -6,10 +6,14 @@ import { formFiller, LOGIN } from '../actions';
 import { userLogIn } from '../proxies/User';
 
 class HomePage extends Component {
-  handleLogin = async () => {
-    const { loginInfo, formFiller } = this.props;
+  state = { username: '', password: '' };
 
-    const loginCheck = await userLogIn(loginInfo);
+  handleLogin = async () => {
+    const { formFiller } = this.props;
+
+    const { username, password } = this.state;
+
+    const loginCheck = await userLogIn({ username, password });
 
     const { passwordCheck, userid } = loginCheck.data;
 
@@ -18,6 +22,8 @@ class HomePage extends Component {
 
       formFiller('isLoggedIn', true, LOGIN);
     } else {
+      this.setState({ username: '', password: '' });
+
       alert(loginCheck.data);
     }
   };
@@ -25,15 +31,13 @@ class HomePage extends Component {
   handleLoginInfo = event => {
     const { id: key, value } = event.target;
 
-    const { formFiller } = this.props;
-
-    formFiller(key, value, LOGIN);
+    this.setState({ [key]: value });
   };
 
   render = () => {
     const { handleLoginInfo, handleLogin } = this;
 
-    const { isLoggedIn } = this.props.loginInfo;
+    const { isLoggedIn } = this.props.user;
 
     return (
       <div>
@@ -67,8 +71,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-  const { loginInfo } = state;
-  return { loginInfo };
+  const { user } = state;
+  return { user };
 };
 
 export default connect(mapStateToProps, {

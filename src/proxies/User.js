@@ -5,7 +5,6 @@ export function createUser(user) {
 }
 
 export function userLogIn(user) {
-  console.log(user);
   return api.get('user/login', {
     params: {
       ...user
