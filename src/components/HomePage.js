@@ -22,6 +22,8 @@ class HomePage extends Component {
 
       formFiller('isLoggedIn', true, LOGIN);
     } else {
+      this.setState({ username: '', password: '' });
+
       alert(loginCheck.data);
     }
   };
@@ -35,7 +37,7 @@ class HomePage extends Component {
   render = () => {
     const { handleLoginInfo, handleLogin } = this;
 
-    const { isLoggedIn } = this.props.loginInfo;
+    const { isLoggedIn } = this.props.user;
 
     return (
       <div>
@@ -69,8 +71,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-  const { loginInfo } = state;
-  return { loginInfo };
+  const { user } = state;
+  return { user };
 };
 
 export default connect(mapStateToProps, {

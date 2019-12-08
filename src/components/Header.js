@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import { LOG_OUT, formFiller } from '../actions/index';
 
-const Header = ({ formFiller, loginInfo }) => {
-  const { isLoggedIn } = loginInfo;
+const Header = ({ formFiller, user }) => {
+  const { isLoggedIn } = user;
 
   return isLoggedIn ? (
     <div style={{ marginBottom: '5%' }}>
@@ -32,8 +32,8 @@ const Header = ({ formFiller, loginInfo }) => {
 };
 
 const mapStateToProps = state => {
-  const { loginInfo } = state;
-  return { loginInfo };
+  const { user } = state;
+  return { user };
 };
 
 export default connect(mapStateToProps, { formFiller })(Header);
