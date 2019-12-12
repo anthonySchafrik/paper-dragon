@@ -2,11 +2,12 @@ import React from 'react';
 import Root from '../Root';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { SignUp } from './SignUp';
+
+import SignUp from './SignUp';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('SignUp component should render', () => {
+describe('SignUp component', () => {
   let wrapper;
 
   let state = {
@@ -22,12 +23,14 @@ describe('SignUp component should render', () => {
         <SignUp {...state} />
       </Root>
     );
-    console.log(wrapper.debug());
-    console.log(wrapper.find('userName'));
+    // console.log(wrapper.debug());
   });
 
   test('should render', () => {
     expect(wrapper.exists()).toBe(true);
-    // expect(wrapper.dive().state().userName).to.equal('a');
   });
+
+  // test('Should find state', () => {
+  //   expect(wrapper.state('isLoading')).to.equal('a');
+  // });
 });

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { formFiller, SIGN_UP } from '../actions';
 import { createUser } from '../proxies/User';
 
-export class SignUp extends Component {
+class SignUp extends Component {
   state = { userName: '', firstName: '', password: '', passwordCheck: '' };
 
   handleCreateUser = async () => {
