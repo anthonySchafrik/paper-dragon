@@ -1,3 +1,19 @@
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+
+// import 'babel-polyfill';
+
+// import App from './App';
+// import Root from './Root';
+
+// ReactDOM.render(
+//   <Root>
+//     <App />
+//   </Root>,
+
+//   document.getElementById('root')
+// );
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'babel-polyfill';
