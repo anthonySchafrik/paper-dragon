@@ -31,6 +31,6 @@ describe('SignUp component', () => {
   });
 
   // test('Should find state', () => {
-  //   expect(wrapper.state('isLoading')).to.equal('a');
+  //   expect(wrapper.state('userName')).to.equal('a');
   // });
 });
