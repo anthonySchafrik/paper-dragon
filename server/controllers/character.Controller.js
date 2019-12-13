@@ -4,7 +4,7 @@ const log = require('../utils').log;
 module.exports.fetchCharacters = async (req, res) => {
   const { userid } = req.query;
 
-  let sql = `SELECT name, level, hp, exp FROM Characters WHERE (userid = '${userid}');`;
+  let sql = `SELECT name, level, hp, exp, type FROM Characters WHERE (userid = '${userid}');`;
 
   let characters;
 

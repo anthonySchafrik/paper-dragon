@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack -d",
     "test": "jest --verbose",
     "test-watch": "jest --watchAll --verbose",
     "test-coverage": "jest --verbose --coverage",
     "dev-build": "webpack -d --watch",
-    "dev-server": "nodemon --inspect server/server.js"
+    "dev-server": "nodemon --inspect server/server.js",
+    "start": "webpack -d && node server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -37,8 +39,10 @@
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "css-loader": "^2.1.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "history": "^4.10.1",
+    "identity-obj-proxy": "^3.0.0",
     "mongoose": "^5.7.13",
     "nodemon": "^2.0.1",
     "path": "^0.12.7",
@@ -53,5 +57,12 @@
     "redux": "^4.0.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0"
+  },
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   }
 }

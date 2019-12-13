@@ -7,7 +7,8 @@ const INITIAL_STATE = {
     character: '',
     level: NaN,
     hp: NaN,
-    exp: NaN
+    exp: NaN,
+    type: ''
   },
   createCharacter: {
     name: '',
