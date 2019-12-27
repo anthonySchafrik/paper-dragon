@@ -8,7 +8,7 @@ const CombatCharDis = ({ character }) => {
   return (
     <>
       <div className={styles.titleRow}>
-        <div>name</div>
+        <div>Character</div>
         <div>level</div>
         <div>hp</div>
         <div>exp</div>

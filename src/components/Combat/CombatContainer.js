@@ -10,7 +10,7 @@ export const CombatContainer = () => {
       <div className={styles.container}>
         <Battle />
       </div>
-      <div style={{ width: '42em', margin: 'auto' }}>
+      <div style={{ margin: 'auto' }}>
         <CombatCharDis />
       </div>
     </>

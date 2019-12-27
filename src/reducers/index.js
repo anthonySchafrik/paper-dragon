@@ -15,6 +15,7 @@ const persistConfig1 = {
 };
 
 const persistedReducer1 = persistReducer(persistConfig1, user);
+const persistedReducer2 = persistReducer(persistConfig1, character);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
@@ -22,7 +23,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 let store = createStore(
   combineReducers({
-    character,
+    character: persistedReducer2,
     user: persistedReducer1
   }),
   composeEnhancers(applyMiddleware(thunk))
