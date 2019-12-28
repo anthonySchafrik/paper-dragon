@@ -10,7 +10,7 @@ const DebounceComponent = ({
 }) => {
   const handleDebounce = event => {
     const { value } = event.target;
-    console.log(minChar);
+
     if (value.length >= minChar) setTimeout(handleChange(name, value), 900);
   };
 
