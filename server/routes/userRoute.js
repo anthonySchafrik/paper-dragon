@@ -1,5 +1,5 @@
 const express = require('express');
-const { logUserIn, createUser } = require('../controllers/userController.js');
+const { logUserIn, createUser } = require('../controllers/userController');
 
 const apiBase = '/user';
 
