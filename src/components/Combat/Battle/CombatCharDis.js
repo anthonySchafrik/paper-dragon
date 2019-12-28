@@ -9,10 +9,10 @@ const CombatCharDis = ({ character }) => {
     <>
       <div className={styles.titleRow}>
         <div>Character</div>
-        <div>level</div>
-        <div>hp</div>
-        <div>exp</div>
-        <div>type</div>
+        <div>Level</div>
+        <div>HP</div>
+        <div>EXP</div>
+        <div>Type</div>
       </div>
 
       <div className={styles.charInfo}>
