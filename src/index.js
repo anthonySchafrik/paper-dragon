@@ -1,3 +1,4 @@
+// when i try to go back to getting testing working
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 
@@ -23,8 +24,8 @@ import { Provider } from 'react-redux';
 
 import App from './App';
 import history from './history';
-
 import { store, persistor } from './reducers';
+import style from './index.module.css';
 
 ReactDOM.render(
   <Provider store={store}>

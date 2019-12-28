@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// this page will show char armor and inv with out having to be playing
 const Character = ({ character }) => {
   const { name, level, hp, exp, type } = character;
 

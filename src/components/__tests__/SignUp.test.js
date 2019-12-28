@@ -1,9 +1,9 @@
 import React from 'react';
-import Root from '../Root';
+import Root from '../../Root';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import SignUp from './SignUp';
+import SignUp from '../SignUp';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -31,6 +31,6 @@ describe('SignUp component', () => {
   });
 
   // test('Should find state', () => {
-  //   expect(wrapper.state('isLoading')).to.equal('a');
+  //   expect(wrapper.state('userName')).to.equal('a');
   // });
 });

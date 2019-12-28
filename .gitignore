@@ -3,3 +3,4 @@ bundle.js
 .env
 package-lock.json
 gameIdea
+coverage

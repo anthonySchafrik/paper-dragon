@@ -1,7 +1,11 @@
 const pg = require('pg');
 const log = require('../server/utils').log;
 
-const conString = 'postgres://postgres:password@localhost:5432/PaperDragon';
+const user = process.env.PG_USER;
+const pass = process.env.PG_PASS;
+const server = process.env.PG_SERVER_NAME;
+
+const conString = `postgres://${user}:${pass}@${server}:5432/PaperDragon`;
 
 const client = new pg.Client(conString);
 

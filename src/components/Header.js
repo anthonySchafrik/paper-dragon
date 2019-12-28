@@ -4,20 +4,28 @@ import { connect } from 'react-redux';
 
 import { LOG_OUT, formFiller } from '../actions/index';
 
+const styles = {
+  display: 'flex',
+  justifyContent: 'space-evenly'
+};
+
 const Header = ({ formFiller, user }) => {
   const { isLoggedIn } = user;
 
   return isLoggedIn ? (
-    <div style={{ marginBottom: '5%' }}>
+    <div style={styles}>
       <Link to="/">
         <button>Home</button>
       </Link>
+
       <Link to="/accountSetting">
         <button>Account Setting</button>
       </Link>
+
       <Link to="/characterPage">
         <button>Characters</button>
       </Link>
+
       <Link to="/">
         <button
           onClick={() => {

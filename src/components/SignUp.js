@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { formFiller, SIGN_UP } from '../actions';
 import { createUser } from '../proxies/User';
+import DebounceComponent from './DebounceComponent';
 
 class SignUp extends Component {
   state = { userName: '', firstName: '', password: '', passwordCheck: '' };
@@ -31,13 +32,7 @@ class SignUp extends Component {
     }
   };
 
-  handleSignInfo = event => {
-    const { id: key, value } = event.target;
-
-    const { formFiller } = this.props;
-
-    this.setState({ [key]: value });
-  };
+  handleSignInfo = (key, value) => this.setState({ [key]: value });
 
   passwordChecker = (pass, passCheck) => {
     if (pass === passCheck) {
@@ -53,35 +48,52 @@ class SignUp extends Component {
       <div>
         <label>UserName</label>
         <br />
-        <input
+
+        <DebounceComponent
+          name="userName"
           type="text"
-          onChange={handleSignInfo}
-          id="userName"
-          maxLength="15"
           placeholder="Max length of 15"
+          maxLength={15}
+          handleChange={handleSignInfo}
+          minChar={1}
         />
         <br />
         <label>First Name</label>
         <br />
-        <input type="text" onChange={handleSignInfo} id="firstName" />
+
+        <DebounceComponent
+          name="firstName"
+          type="text"
+          placeholder=""
+          maxLength={15}
+          handleChange={handleSignInfo}
+          minChar={1}
+        />
+
         <br />
         <label>Password</label>
         <br />
-        <input
+
+        <DebounceComponent
+          name="password"
           type="password"
-          onChange={handleSignInfo}
-          id="password"
-          maxLength="15"
           placeholder="Max length of 15"
+          maxLength={15}
+          handleChange={handleSignInfo}
+          minChar={1}
         />
+
         <br />
         <label>Password Check</label>
         <br />
-        <input
+
+        <DebounceComponent
+          name="passwordCheck"
           type="password"
-          onChange={handleSignInfo}
-          id="passwordCheck"
-          maxLength="15"
+          placeholder="Max length of 15"
+          maxLength={15}
+          handleChange={handleSignInfo}
+          minChar={1}
         />
 
         <div>

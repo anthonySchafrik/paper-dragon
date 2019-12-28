@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { formFiller, LOGIN } from '../actions';
 import { userLogIn } from '../proxies/User';
+import DebounceComponent from './DebounceComponent';
 
 class HomePage extends Component {
   state = { username: '', password: '' };
@@ -28,11 +29,7 @@ class HomePage extends Component {
     }
   };
 
-  handleLoginInfo = event => {
-    const { id: key, value } = event.target;
-
-    this.setState({ [key]: value });
-  };
+  handleLoginInfo = (key, value) => this.setState({ [key]: value });
 
   render = () => {
     const { handleLoginInfo, handleLogin } = this;
@@ -46,12 +43,27 @@ class HomePage extends Component {
           <div>
             <label>Username</label>
             <br />
-            <input type="text" onChange={handleLoginInfo} id="username" />
+
+            <DebounceComponent
+              name="username"
+              type="text"
+              maxLength={15}
+              handleChange={handleLoginInfo}
+              minChar={1}
+            />
             <br />
             <label>Password</label>
             <br />
-            <input type="password" onChange={handleLoginInfo} id="password" />
+
+            <DebounceComponent
+              name="password"
+              type="password"
+              maxLength={15}
+              handleChange={handleLoginInfo}
+              minChar={1}
+            />
             <br />
+
             <button onClick={handleLogin}>Login</button>
             <Link to="/signUp">
               <button>Sign Up</button>
@@ -60,8 +72,10 @@ class HomePage extends Component {
         ) : (
           <div>
             <h3>News and Updates</h3>
+
             <div>
-              <p>Comming soon a game.</p>
+              <p>Game is ment to be played at 500px width</p>
+              <p>Coming soon a game.</p>
             </div>
           </div>
         )}
