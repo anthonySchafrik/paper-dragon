@@ -8,7 +8,7 @@ class CombatInput extends Component {
     move: ''
   };
 
-  handleMove = value => this.setState({ move: value });
+  handleMove = (key, value) => this.setState({ move: value });
 
   render = () => {
     const { handleMove } = this;
