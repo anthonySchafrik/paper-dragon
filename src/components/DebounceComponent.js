@@ -1,10 +1,10 @@
 import React from 'react';
 
 const DebounceComponent = ({
-  name,
-  type,
+  name = '',
+  type = '',
   handleChange,
-  placeholder,
+  placeholder = '',
   maxLength = 10,
   minChar = 3
 }) => {
