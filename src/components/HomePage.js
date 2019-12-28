@@ -74,7 +74,8 @@ class HomePage extends Component {
             <h3>News and Updates</h3>
 
             <div>
-              <p>Comming soon a game.</p>
+              <p>Game is ment to be played at 500px width</p>
+              <p>Coming soon a game.</p>
             </div>
           </div>
         )}

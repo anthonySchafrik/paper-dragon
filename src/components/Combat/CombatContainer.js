@@ -4,6 +4,7 @@ import styles from './CombatContainer.module.css';
 import Battle from './Battle/Battle';
 import CombatCharDis from './Battle/CombatCharDis';
 import CombatInput from './Battle/CombatInput';
+import Options from './Battle/Options';
 
 export const CombatContainer = () => {
   return (
@@ -18,6 +19,10 @@ export const CombatContainer = () => {
 
       <div>
         <CombatInput />
+      </div>
+
+      <div>
+        <Options />
       </div>
     </>
   );

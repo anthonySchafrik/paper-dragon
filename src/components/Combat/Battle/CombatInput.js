@@ -15,7 +15,7 @@ class CombatInput extends Component {
 
     return (
       <>
-        <div>
+        <div className={styles.container}>
           <DebounceComponent
             name="moveType"
             type="text"

@@ -1,5 +1,5 @@
-.container {
+.center {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 1vh auto 0 auto;
 }

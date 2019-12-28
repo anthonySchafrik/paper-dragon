@@ -13,7 +13,7 @@ const DebounceComponent = ({
     console.log(minChar);
     if (value.length >= minChar) setTimeout(handleChange(name, value), 900);
   };
-  console.log({ name, type, handleChange, placeholder, maxLength, minChar });
+
   return (
     <input
       name={name}
