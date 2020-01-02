@@ -5,7 +5,7 @@ import AccountSetting from './components/AccountSetting';
 import Character from './components/character/Character';
 import CharacterPage from './components/character/CharacterPage';
 import CreateCharacterPage from './components/character/CreateCharacterPage';
-import { CombatContainer } from './components/Combat/CombatContainer';
+import CombatContainer from './components/Combat/CombatContainer';
 import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 

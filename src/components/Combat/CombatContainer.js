@@ -1,12 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import styles from './CombatContainer.module.css';
 import Battle from './Battle/Battle';
 import CombatCharDis from './Battle/CombatCharDis';
 import CombatInput from './Battle/CombatInput';
 import Options from './Battle/Options';
+import { GetRanMon } from '../../actions/Combat';
 
-export const CombatContainer = () => {
+const CombatContainer = ({ GetRanMon, Monster }) => {
   return (
     <>
       <div className={styles.container}>
@@ -20,7 +22,7 @@ export const CombatContainer = () => {
       <div
         style={{ display: 'flex', justifyContent: 'center', marginTop: '1vh' }}
       >
-        <button>Find Monster</button>
+        <button onClick={GetRanMon}>Find Monster</button>
       </div>
 
       <div>
@@ -33,3 +35,11 @@ export const CombatContainer = () => {
     </>
   );
 };
+
+const mapStateToProps = state => {
+  const { Monster } = state.combat;
+
+  return { Monster };
+};
+
+export default connect(mapStateToProps, { GetRanMon })(CombatContainer);

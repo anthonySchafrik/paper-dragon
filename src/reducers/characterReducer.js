@@ -1,4 +1,4 @@
-import { CHARACTER_INFO, SELECTED_CHARACTER } from '../actions';
+import { CHARACTER_INFO, SELECTED_CHARACTER } from '../actions/Character';
 
 const INITIAL_STATE = {
   isSelected: false,

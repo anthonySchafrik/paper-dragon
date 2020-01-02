@@ -6,8 +6,8 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import thunk from 'redux-thunk';
 
 import character from './characterReducer';
-import user from './UserReducer';
-
+import user from './userReducer';
+import combat from './combat';
 const persistConfig1 = {
   key: 'root1',
   storage,
@@ -30,7 +30,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 let store = createStore(
   combineReducers({
     character: persistedReducer2,
-    user: persistedReducer1
+    user: persistedReducer1,
+    combat
   }),
   composeEnhancers(applyMiddleware(thunk))
 );
