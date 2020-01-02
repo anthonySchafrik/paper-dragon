@@ -17,6 +17,12 @@ export const CombatContainer = () => {
         <CombatCharDis />
       </div>
 
+      <div
+        style={{ display: 'flex', justifyContent: 'center', marginTop: '1vh' }}
+      >
+        <button>Find Monster</button>
+      </div>
+
       <div>
         <CombatInput />
       </div>
