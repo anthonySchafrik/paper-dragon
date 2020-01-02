@@ -1,11 +1,13 @@
 export const Get_Monster = 'Combat/Get_Monster';
 
+import { GetAMonster } from '../proxies/Combat';
+
 export const GetRanMon = () => {
-  const mon = { data: { key: 'testing' } };
+  return async dispatch => {
+    const mon = await GetAMonster();
 
-  const { data } = mon;
+    const { data } = mon;
 
-  return dispatch => {
     dispatch({
       type: Get_Monster,
       payload: data

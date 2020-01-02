@@ -1,9 +1,9 @@
 import api from './api';
 
-export function createCharacter(character) {
+export const createCharacter = character => {
   return api.post('/characters', character);
-}
+};
 
-export function fetchCharacters(userid) {
+export const fetchCharacters = userid => {
   return api.get('/characters', { params: { userid: userid } });
-}
+};
