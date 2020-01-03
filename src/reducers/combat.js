@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   attackType: 'none selected',
   attack: '',
   options: {
-    melee: [{ name: 'Auto Attack', high: 3, low: 0 }],
+    melee: [{ name: 'auto attack', high: 3, low: 0 }],
     magic: [],
     items: [],
     none: []

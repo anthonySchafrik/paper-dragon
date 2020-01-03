@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styles from './CombatInput.module.css';
 import DebounceComponent from '../../DebounceComponent';
 import { attackType, attackMove } from '../../../actions/Combat';
+import { playTurn } from '../.././../utils';
 
 class CombatInput extends Component {
   state = {
@@ -21,10 +22,10 @@ class CombatInput extends Component {
   };
 
   handleSetAttack = () => {
-    const { attack } = this.state;
-    const { attackMove } = this.props;
+    const { combat, selectedCharacter } = this.props;
+    const { monster, options, attackType } = combat;
 
-    attackMove(attack);
+    playTurn(selectedCharacter, options[attackType], monster);
   };
 
   render = () => {
@@ -59,4 +60,15 @@ class CombatInput extends Component {
   };
 }
 
-export default connect(null, { attackType, attackMove })(CombatInput);
+const mapStateToProps = state => {
+  const { selectedCharacter } = state.character;
+
+  return {
+    selectedCharacter,
+    combat: state.combat
+  };
+};
+
+export default connect(mapStateToProps, { attackType, attackMove })(
+  CombatInput
+);
