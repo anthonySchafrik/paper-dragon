@@ -1,4 +1,8 @@
-import { CHARACTER_INFO, SELECTED_CHARACTER } from '../actions';
+import {
+  CHARACTER_INFO,
+  SELECTED_CHARACTER,
+  UPDATE_CHARACTER
+} from '../actions/Character';
 
 const INITIAL_STATE = {
   isSelected: false,
@@ -28,6 +32,12 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         selectedCharacter: { ...payload.character },
         isSelected: true
+      };
+
+    case UPDATE_CHARACTER:
+      return {
+        ...state,
+        selectedCharacter: { ...payload.character }
       };
 
     default:

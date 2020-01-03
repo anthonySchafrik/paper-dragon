@@ -1,13 +1,13 @@
 import api from './api';
 
-export function createUser(user) {
+export const createUser = user => {
   return api.post('/user', user);
-}
+};
 
-export function userLogIn(user) {
+export const userLogIn = user => {
   return api.get('user/login', {
     params: {
       ...user
     }
   });
-}
+};
