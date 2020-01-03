@@ -8,7 +8,7 @@ import CombatInput from './Battle/CombatInput';
 import Options from './Battle/Options';
 import { GetRanMon } from '../../actions/Combat';
 
-const CombatContainer = ({ GetRanMon, Monster }) => {
+const CombatContainer = ({ GetRanMon, monster }) => {
   return (
     <>
       <div className={styles.container}>
@@ -37,9 +37,9 @@ const CombatContainer = ({ GetRanMon, Monster }) => {
 };
 
 const mapStateToProps = state => {
-  const { Monster } = state.combat;
+  const { monster } = state.combat;
 
-  return { Monster };
+  return { monster };
 };
 
 export default connect(mapStateToProps, { GetRanMon })(CombatContainer);

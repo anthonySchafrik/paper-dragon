@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import styles from './CombatInput.module.css';
 import DebounceComponent from '../../DebounceComponent';
+import { attackType } from '../../../actions/Combat';
 
 class CombatInput extends Component {
   state = {
@@ -10,8 +12,15 @@ class CombatInput extends Component {
 
   handleMove = (key, value) => this.setState({ move: value });
 
+  handleSetMoveType = () => {
+    const { move } = this.state;
+    const { attackType } = this.props;
+
+    attackType(move);
+  };
+
   render = () => {
-    const { handleMove } = this;
+    const { handleMove, handleSetMoveType } = this;
 
     return (
       <>
@@ -23,11 +32,11 @@ class CombatInput extends Component {
             handleChange={handleMove}
           />
 
-          <button>Select move type</button>
+          <button onClick={handleSetMoveType}>Select move type</button>
         </div>
       </>
     );
   };
 }
 
-export default CombatInput;
+export default connect(null, { attackType })(CombatInput);
