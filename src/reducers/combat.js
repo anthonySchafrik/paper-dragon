@@ -1,4 +1,4 @@
-import { Get_Monster, ATTACK_TYPE } from '../actions/Combat';
+import { Get_Monster, ATTACK_TYPE, ATTACK } from '../actions/Combat';
 
 const INITIAL_STATE = {
   monster: {
@@ -14,7 +14,14 @@ const INITIAL_STATE = {
       ]
     ]
   },
-  attackType: 'none selected'
+  attackType: 'none selected',
+  attack: '',
+  options: {
+    melee: [{ name: 'Auto Attack', high: 3, low: 0 }],
+    magic: [],
+    items: [],
+    none: []
+  }
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -26,6 +33,12 @@ export default (state = INITIAL_STATE, action) => {
 
     case ATTACK_TYPE:
       return { ...state, attackType: payload };
+
+    case ATTACK:
+      return { ...state, attack: payload };
+
+    // case ATTACK_OPTIONS:
+    //   return { ...state, attackOption: payload };
 
     default:
       return state;

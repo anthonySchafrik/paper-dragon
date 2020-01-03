@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import styles from './Battle.module.css';
 
 class Battle extends Component {
-  state = { monster: this.props.monster };
+  state = {
+    monster: this.props.combat.monster,
+    selectedCharacter: this.props.selectedCharacter
+  };
 
   componentDidUpdate = prevProps => {
     const { monster: preMon } = prevProps;
 
-    const { monster } = this.props;
+    const { monster } = this.props.combat;
 
     if (preMon.type !== monster.type) {
       this.setState({ monster });
@@ -17,7 +20,7 @@ class Battle extends Component {
   };
 
   render = () => {
-    const { type, element, moves } = this.state.monster;
+    const { type, element } = this.state.monster;
 
     return (
       <div className={styles.container}>
@@ -32,8 +35,10 @@ class Battle extends Component {
 }
 
 const mapStateToProps = state => {
-  const { monster } = state.combat;
-  return { monster };
+  const { combat } = state;
+  const { selectedCharacter } = state.character;
+
+  return { combat, selectedCharacter };
 };
 
 export default connect(mapStateToProps, {})(Battle);
