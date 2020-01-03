@@ -1,2 +1,3 @@
 # paper-dragon
-Text based rpg 
+
+-This is a coding experiment for my personal growth
