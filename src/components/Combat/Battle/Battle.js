@@ -10,7 +10,7 @@ class Battle extends Component {
   };
 
   componentDidUpdate = prevProps => {
-    const { monster: preMon } = prevProps;
+    const { monster: preMon } = prevProps.combat;
 
     const { monster } = this.props.combat;
 
