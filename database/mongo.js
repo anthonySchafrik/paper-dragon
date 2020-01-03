@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const log = require('../server/utils').log;
 
-const conString = 'mongodb://localhost/PaperDragon';
-
-const db = mongoose.connection;
+const conString = process.env.MONGO_CONNECT_STRING;
 
 mongoose.connect(conString, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
+const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'mongoDB connection error'));
 db.once('open', () => log('mongoDB successfully connected'));
 
-const monsterSchema = new Schema({
+const monsterSchema = new mongoose.Schema({
   type: String,
   element: String,
   moves: Array
@@ -52,16 +52,7 @@ const bear = new Monster({
   ]
 });
 
-// fireDragon.save((err, fireDragon) => {
-//   if (err) {
-//     log(err);
-//   }
-// });
+// fireDragon.save();
+// bear.save();
 
-// bear.save((err, bear) => {
-//   if (err) {
-//     log(err);
-//   }
-// });
-
-// fireDragon.save().then(() => console.log('dragon?'));
+module.exports.Monster = Monster;

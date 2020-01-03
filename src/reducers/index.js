@@ -1,12 +1,12 @@
-import { combineReducers } from 'redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
-import thunk from 'redux-thunk';
+import ReduxThunk from 'redux-thunk';
 
 import character from './characterReducer';
-import user from './UserReducer';
+import user from './userReducer';
+import combat from './combat';
 
 const persistConfig1 = {
   key: 'root1',
@@ -24,17 +24,17 @@ const persistedReducer1 = persistReducer(persistConfig1, user);
 const persistedReducer2 = persistReducer(persistConfig2, character);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
-// const store = createStore(reducers, applyMiddleware(thunk));
+const reducers = combineReducers({
+  character: persistedReducer2,
+  user: persistedReducer1,
+  combat
+});
 
-let store = createStore(
-  combineReducers({
-    character: persistedReducer2,
-    user: persistedReducer1
-  }),
-  composeEnhancers(applyMiddleware(thunk))
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(ReduxThunk))
 );
 
-let persistor = persistStore(store);
+const persistor = persistStore(store);
 
 export { store, persistor };

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { selectedCharacter } from '../../actions';
+import { selectedCharacter } from '../../actions/Character';
 
 const CharacterList = ({ characters, selectedCharacter }) => {
   const handleCharacterSelect = character => () => selectedCharacter(character);

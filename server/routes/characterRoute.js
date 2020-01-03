@@ -1,6 +1,8 @@
 const express = require('express');
-const { fetchCharacters } = require('../controllers/character.Controller');
-const { createCharacters } = require('../controllers/character.Controller');
+const {
+  fetchCharacters,
+  createCharacters
+} = require('../controllers/characterController');
 
 const apiBase = '/characters';
 
