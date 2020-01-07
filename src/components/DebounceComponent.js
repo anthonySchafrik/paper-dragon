@@ -1,4 +1,5 @@
 import React from 'react';
+import { DebounceInput } from 'react-debounce-input';
 
 const DebounceComponent = ({
   name = '',
@@ -11,16 +12,17 @@ const DebounceComponent = ({
   const handleDebounce = event => {
     const { value } = event.target;
 
-    if (value.length >= minChar) setTimeout(handleChange(name, value), 900);
+    handleChange(name, value);
   };
 
   return (
-    <input
+    <DebounceInput
       name={name}
       type={type}
       placeholder={placeholder}
       maxLength={maxLength}
       onChange={handleDebounce}
+      debounceTimeout={900}
     />
   );
 };
