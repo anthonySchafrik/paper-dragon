@@ -3,7 +3,14 @@ import { connect } from 'react-redux';
 
 import styles from './CombatInput.module.css';
 import DebounceComponent from '../../DebounceComponent';
-import { attackType, attackMove } from '../../../actions/Combat';
+
+import {
+  attackType,
+  attackMove,
+  monsterAttackText
+} from '../../../actions/Combat';
+
+import { UpdateCharacter } from '../../../actions/Character';
 import { playTurn } from '../.././../utils';
 
 class CombatInput extends Component {
@@ -22,10 +29,24 @@ class CombatInput extends Component {
   };
 
   handleSetAttack = () => {
-    const { combat, selectedCharacter } = this.props;
+    const {
+      combat,
+      selectedCharacter,
+      monsterAttackText,
+      UpdateCharacter
+    } = this.props;
+
+    const { hp } = selectedCharacter;
     const { monster, options, attackType } = combat;
 
-    playTurn(selectedCharacter, options[attackType], monster);
+    const turn = playTurn(selectedCharacter, options[attackType], monster);
+    const { monAttach, monDamg, playerDamDone } = turn;
+
+    //sets the test for mon attack and damg
+    monsterAttackText(monAttach, monDamg);
+
+    //updates the char hp after attack
+    UpdateCharacter({ ...selectedCharacter, hp: hp - monDamg });
   };
 
   render = () => {
@@ -39,6 +60,7 @@ class CombatInput extends Component {
             type="text"
             placeholder="Enter input"
             handleChange={handleInput}
+            timeout={200}
           />
 
           <button onClick={handleSetMoveType}>Select move type</button>
@@ -51,6 +73,7 @@ class CombatInput extends Component {
             placeholder="Enter Attack"
             handleChange={handleInput}
             maxLength={25}
+            timeout={200}
           />
 
           <button onClick={handleSetAttack}>Select Attack</button>
@@ -69,6 +92,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { attackType, attackMove })(
-  CombatInput
-);
+export default connect(mapStateToProps, {
+  attackType,
+  attackMove,
+  monsterAttackText,
+  UpdateCharacter
+})(CombatInput);

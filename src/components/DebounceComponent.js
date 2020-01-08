@@ -7,7 +7,8 @@ const DebounceComponent = ({
   handleChange,
   placeholder = '',
   maxLength = 10,
-  minChar = 3
+  minChar = 3,
+  timeout = 400
 }) => {
   const handleDebounce = event => {
     const { value } = event.target;
@@ -22,7 +23,7 @@ const DebounceComponent = ({
       placeholder={placeholder}
       maxLength={maxLength}
       onChange={handleDebounce}
-      debounceTimeout={900}
+      debounceTimeout={timeout}
     />
   );
 };

@@ -5,4 +5,5 @@
   width: 60%;
   height: 175px;
   padding: 0 1em 0 1em;
+  overflow-y: scroll;
 }
