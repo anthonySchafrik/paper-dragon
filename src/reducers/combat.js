@@ -1,4 +1,9 @@
-import { Get_Monster, ATTACK_TYPE, ATTACK } from '../actions/Combat';
+import {
+  GET_MONSTER,
+  ATTACK_TYPE,
+  ATTACK,
+  MONSTER_ATTACK_TEXT
+} from '../actions/Combat';
 
 const INITIAL_STATE = {
   monster: {
@@ -21,14 +26,16 @@ const INITIAL_STATE = {
     magic: [],
     items: [],
     none: []
-  }
+  },
+  monsterAttackText: []
 };
 
 export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
+  const { monsterAttackText } = state;
 
   switch (type) {
-    case Get_Monster:
+    case GET_MONSTER:
       return { ...state, monster: payload };
 
     case ATTACK_TYPE:
@@ -39,6 +46,9 @@ export default (state = INITIAL_STATE, action) => {
 
     // case ATTACK_OPTIONS:
     //   return { ...state, attackOption: payload };
+
+    case MONSTER_ATTACK_TEXT:
+      return { ...state, monsterAttackText: [...monsterAttackText, payload] };
 
     default:
       return state;

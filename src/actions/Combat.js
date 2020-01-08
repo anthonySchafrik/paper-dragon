@@ -1,7 +1,8 @@
-export const Get_Monster = 'Combat/Get_Monster';
+export const GET_MONSTER = 'Combat/GET_MONSTER';
 export const ATTACK_TYPE = 'Combat/ATTACK_TYPE';
 export const ATTACK = 'Combat/ATTACK';
 export const ATTACK_OPTIONS = 'Combat/ATTACK_OPTIONS';
+export const MONSTER_ATTACK_TEXT = 'Combat/MONSTER_ATTACK_TEXT';
 
 import { GetAMonster } from '../proxies/Combat';
 
@@ -12,7 +13,7 @@ export const GetRanMon = () => {
     const { data } = mon;
 
     dispatch({
-      type: Get_Monster,
+      type: GET_MONSTER,
       payload: data
     });
   };
@@ -38,3 +39,10 @@ export const attackMove = attack => {
 //     payload: options
 //   };
 // };
+
+export const monsterAttackText = (attack, damg) => {
+  return {
+    type: MONSTER_ATTACK_TEXT,
+    payload: `Monster attacks with ${attack} for ${damg} damage`
+  };
+};

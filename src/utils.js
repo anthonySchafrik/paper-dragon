@@ -6,15 +6,25 @@ export const handleInfo = (key, value, type) => {
 
 export const log = console.log;
 
-export const playTurn = (char, attack, mon) => {
+export const playTurn = (char, charAttack, mon) => {
   const { moves: monMoves } = mon;
-  const { high: ph, low: pl } = attack[0];
+  const { high: ph, low: pl } = charAttack[0];
 
-  const monAttack = randomNum(monMoves.length, 0);
+  //selects the attack from the moves array
+  const monAttackArray = monMoves[randomNum(monMoves.length, 0)];
 
-  const playerDam = randomNum(ph, pl);
+  const { high: mh, low: ml } = monAttackArray[1];
 
-  console.log(monAttack, playerDam);
+  //getting the damage the monster and the player
+  const monDamageDone = randomNum(mh, ml);
+  const playerDamageDone = randomNum(ph, pl);
+
+  //return damage for the turn
+  return {
+    monAttach: monAttackArray[0],
+    monDamg: monDamageDone,
+    playerDamDone: playerDamageDone
+  };
 };
 
 const randomNum = (max, min) => {

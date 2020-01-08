@@ -21,6 +21,7 @@ class Battle extends Component {
 
   render = () => {
     const { type, element } = this.state.monster;
+    const { monsterAttackText } = this.props.combat;
 
     return (
       <div className={styles.container}>
@@ -29,6 +30,9 @@ class Battle extends Component {
             ? 'Looking for Monster to battle'
             : `A ${element} ${type} appears`}
         </p>
+        {monsterAttackText.map((text, i) => {
+          return <p key={i}>{text}</p>;
+        })}
       </div>
     );
   };

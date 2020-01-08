@@ -16,7 +16,7 @@ export const UpdateCharacter = character => {
 
     dispatch({
       type: UPDATE_CHARACTER,
-      payload: { character }
+      payload: character
     });
   };
 };
