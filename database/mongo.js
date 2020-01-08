@@ -26,14 +26,10 @@ const fireDragon = new Monster({
   type: 'Dragon',
   element: 'Fire',
   moves: [
-    {
-      moves: [
-        ['Fire Ball', { low: 5, high: 10, aoe: true, autoMiss: false }],
-        ['Fire Claw', { low: 2, high: 5, aoe: false, autoMiss: false }],
-        ['Fly', { low: 5, high: 10, aoe: false, autoMiss: true }],
-        ['Growl', { low: 1, high: 3, aoe: false, autoMiss: true }]
-      ]
-    }
+    ['Fire Ball', { low: 5, high: 10, aoe: true, autoMiss: false }],
+    ['Fire Claw', { low: 2, high: 5, aoe: false, autoMiss: false }],
+    ['Fly', { low: 5, high: 10, aoe: false, autoMiss: true }],
+    ['Growl', { low: 1, high: 3, aoe: false, autoMiss: true }]
   ]
 });
 
@@ -41,14 +37,10 @@ const bear = new Monster({
   type: 'Beast',
   element: 'none',
   moves: [
-    {
-      moves: [
-        ['Fire Ball', { low: 5, high: 10, aoe: true, autoMiss: false }],
-        ['Fire Claw', { low: 2, high: 5, aoe: false, autoMiss: false }],
-        ['Fly', { low: 5, high: 10, aoe: false, autoMiss: true }],
-        ['Growl', { low: 5, high: 10, aoe: false, autoMiss: false }]
-      ]
-    }
+    ['Fire Ball', { low: 5, high: 10, aoe: true, autoMiss: false }],
+    ['Fire Claw', { low: 2, high: 5, aoe: false, autoMiss: false }],
+    ['Fly', { low: 5, high: 10, aoe: false, autoMiss: true }],
+    ['Growl', { low: 5, high: 10, aoe: false, autoMiss: false }]
   ]
 });
 
